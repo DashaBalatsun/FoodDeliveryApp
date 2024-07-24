@@ -50,6 +50,8 @@
 		C85534AC2BC5A83D00228C84 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85534AB2BC5A83D00228C84 /* HomeViewController.swift */; };
 		C85534AE2BC5A84C00228C84 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85534AD2BC5A84C00228C84 /* HomePresenter.swift */; };
 		C85534B42BC5AD8900228C84 /* SmallHCViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85534B32BC5AD8900228C84 /* SmallHCViewCell.swift */; };
+		C8B89B452C517CA90093636E /* BigHViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B89B442C517CA90093636E /* BigHViewCell.swift */; };
+		C8B89B472C5181900093636E /* BigVViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B89B462C5181900093636E /* BigVViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -98,6 +100,8 @@
 		C85534AB2BC5A83D00228C84 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		C85534AD2BC5A84C00228C84 /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
 		C85534B32BC5AD8900228C84 /* SmallHCViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallHCViewCell.swift; sourceTree = "<group>"; };
+		C8B89B442C517CA90093636E /* BigHViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigHViewCell.swift; sourceTree = "<group>"; };
+		C8B89B462C5181900093636E /* BigVViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigVViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -350,6 +354,8 @@
 			isa = PBXGroup;
 			children = (
 				C85534B32BC5AD8900228C84 /* SmallHCViewCell.swift */,
+				C8B89B442C517CA90093636E /* BigHViewCell.swift */,
+				C8B89B462C5181900093636E /* BigVViewCell.swift */,
 			);
 			path = CollectionViewCell;
 			sourceTree = "<group>";
@@ -441,6 +447,7 @@
 				C852D1DE2BB06A92001D8E6D /* ViewController.swift in Sources */,
 				C852D1DA2BB06A92001D8E6D /* AppDelegate.swift in Sources */,
 				C85534B42BC5AD8900228C84 /* SmallHCViewCell.swift in Sources */,
+				C8B89B452C517CA90093636E /* BigHViewCell.swift in Sources */,
 				C852D1F92BB0915B001D8E6D /* AppColors.swift in Sources */,
 				C852D2082BB33795001D8E6D /* MyListCoordinator.swift in Sources */,
 				C852D2022BB20803001D8E6D /* OnboardingCoordinator.swift in Sources */,
@@ -448,6 +455,7 @@
 				C85534862BB9E5C900228C84 /* FDTextField.swift in Sources */,
 				C852D2122BB48C2A001D8E6D /* OnboardingViewController.swift in Sources */,
 				C852D21F2BB88368001D8E6D /* LoginViewController.swift in Sources */,
+				C8B89B472C5181900093636E /* BigVViewCell.swift in Sources */,
 				C852D2062BB3375B001D8E6D /* OrderCoordinator.swift in Sources */,
 				C85534AC2BC5A83D00228C84 /* HomeViewController.swift in Sources */,
 				C852D20A2BB337CE001D8E6D /* ProfileCoordinator.swift in Sources */,
