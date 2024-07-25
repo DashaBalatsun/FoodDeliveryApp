@@ -9,6 +9,12 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
+    private let scrollView = UIScrollView()
+    private let contentView = UIView()
+    private let searchField = FDSearchField()
+    private let geoMarkImage = UIImageView()
+    private let geoLabel = UILabel()
+    
     lazy var smallHCollection: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -35,32 +41,100 @@ class HomeViewController: UIViewController {
         layout.minimumLineSpacing = 20
         layout.minimumInteritemSpacing = 0
         let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collection.isScrollEnabled = false
         collection.tag = 3
         return collection
     }()
+    
+    func calculateContentSize() {
+        var totalHeight: CGFloat = 400 + smallHCollection.bounds.height + bigHCollection.bounds.height
+        for index in 0..<bigVCollection.numberOfItems(inSection: 0) {
+            let indexPath = IndexPath(item: index, section: 0)
+            let cellHieght = collectionView(bigVCollection, layout: bigHCollection.collectionViewLayout, sizeForItemAt: indexPath).height
+            totalHeight += cellHieght
+        }
+        
+        let spacing = CGFloat(bigHCollection.numberOfItems(inSection: 0) - 1) * 30
+        contentView.heightAnchor.constraint(equalToConstant: totalHeight + spacing).isActive = true
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLayout()
         view.backgroundColor = .systemBackground
-        
+        navigationController?.navigationBar.isHidden = true
     }
 }
 // MARK: - Layout
 extension HomeViewController {
     func setupLayout() {
-        setupView()
+        setupScrollView()
+        setupContentView()
+        setupSearchFiew()
+        setupLabel()
         setupSmallHCollection()
         setupBigHCollection()
         setupBigVCollection()
+        calculateContentSize()
     }
     
-    func setupView() {
+    func setupScrollView() {
+        view.addSubview(scrollView)
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.showsVerticalScrollIndicator = true
+        scrollView.alwaysBounceVertical = true
         
+        NSLayoutConstraint.activate([
+            scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+        ])
+    }
+    
+    func setupContentView() {
+        scrollView.addSubview(contentView)
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
+        ])
+    }
+    
+    func  setupSearchFiew() {
+        contentView.addSubview(searchField)
+        searchField.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            searchField.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 30),
+            searchField.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -30),
+            searchField.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 30),
+            searchField.heightAnchor.constraint(equalToConstant: 50)
+        ])
+    }
+    
+    func setupLabel() {
+        contentView.addSubview(geoLabel)
+        contentView.addSubview(geoMarkImage)
+        geoMarkImage.translatesAutoresizingMaskIntoConstraints = false
+        geoLabel.translatesAutoresizingMaskIntoConstraints = false
+        geoLabel.text = "9 West 46 Th Street, New York City"
+        geoMarkImage.image = UIImage(resource: .pin1)
+        
+        NSLayoutConstraint.activate([
+            geoLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 100),
+            geoLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            geoLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 30),
+            geoLabel.heightAnchor.constraint(equalToConstant: 91)
+        ])
     }
     
     func setupSmallHCollection() {
-        view.addSubview(smallHCollection)
+        contentView.addSubview(smallHCollection)
         smallHCollection.translatesAutoresizingMaskIntoConstraints = false
         smallHCollection.backgroundColor = .red
         smallHCollection.delegate = self
@@ -68,15 +142,15 @@ extension HomeViewController {
         smallHCollection.register(SmallHCViewCell.self, forCellWithReuseIdentifier: "SmallHCViewCell")
         
         NSLayoutConstraint.activate([
-            smallHCollection.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
-            smallHCollection.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            smallHCollection.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
+            smallHCollection.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 100),
+            smallHCollection.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            smallHCollection.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 30),
             smallHCollection.heightAnchor.constraint(equalToConstant: 91)
         ])
     }
     
     func setupBigHCollection() {
-        view.addSubview(bigHCollection)
+        contentView.addSubview(bigHCollection)
         bigHCollection.translatesAutoresizingMaskIntoConstraints = false
         bigHCollection.backgroundColor = .red
         bigHCollection.delegate = self
@@ -85,14 +159,14 @@ extension HomeViewController {
         
         NSLayoutConstraint.activate([
             bigHCollection.topAnchor.constraint(equalTo: smallHCollection.bottomAnchor, constant: 50),
-            bigHCollection.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            bigHCollection.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
+            bigHCollection.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            bigHCollection.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 30),
             bigHCollection.heightAnchor.constraint(equalToConstant: 280)
         ])
     }
     
     func setupBigVCollection() {
-        view.addSubview(bigVCollection)
+        contentView.addSubview(bigVCollection)
         bigVCollection.translatesAutoresizingMaskIntoConstraints = false
         bigVCollection.backgroundColor = .red
         bigVCollection.delegate = self
@@ -101,9 +175,10 @@ extension HomeViewController {
         
         NSLayoutConstraint.activate([
             bigVCollection.topAnchor.constraint(equalTo: bigHCollection.bottomAnchor, constant: 50),
-            bigVCollection.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
-            bigVCollection.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
-            bigVCollection.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            bigVCollection.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -30),
+            bigVCollection.heightAnchor.constraint(equalToConstant: 1000),
+            bigVCollection.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 30),
+            bigVCollection.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ])
     }
     

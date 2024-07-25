@@ -52,6 +52,7 @@
 		C85534B42BC5AD8900228C84 /* SmallHCViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85534B32BC5AD8900228C84 /* SmallHCViewCell.swift */; };
 		C8B89B452C517CA90093636E /* BigHViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B89B442C517CA90093636E /* BigHViewCell.swift */; };
 		C8B89B472C5181900093636E /* BigVViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B89B462C5181900093636E /* BigVViewCell.swift */; };
+		C8B89B492C52D6BA0093636E /* FDSearchField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B89B482C52D6BA0093636E /* FDSearchField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -102,6 +103,7 @@
 		C85534B32BC5AD8900228C84 /* SmallHCViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallHCViewCell.swift; sourceTree = "<group>"; };
 		C8B89B442C517CA90093636E /* BigHViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigHViewCell.swift; sourceTree = "<group>"; };
 		C8B89B462C5181900093636E /* BigVViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigVViewCell.swift; sourceTree = "<group>"; };
+		C8B89B482C52D6BA0093636E /* FDSearchField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FDSearchField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -258,6 +260,7 @@
 				C852D2232BB88413001D8E6D /* FDBottomView.swift */,
 				C85534832BB9BCD100228C84 /* FDButton.swift */,
 				C85534852BB9E5C900228C84 /* FDTextField.swift */,
+				C8B89B482C52D6BA0093636E /* FDSearchField.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -472,6 +475,7 @@
 				C85534842BB9BCD100228C84 /* FDButton.swift in Sources */,
 				C85534AE2BC5A84C00228C84 /* HomePresenter.swift in Sources */,
 				C852D2142BB48CB4001D8E6D /* OnboardingViewPresenter.swift in Sources */,
+				C8B89B492C52D6BA0093636E /* FDSearchField.swift in Sources */,
 				C852D1FE2BB1EE28001D8E6D /* Coordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

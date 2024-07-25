@@ -29,5 +29,4 @@ class FDTextField: UITextField {
         self.rightView = paddingView
         self.rightViewMode = .always
     }
-
 }
